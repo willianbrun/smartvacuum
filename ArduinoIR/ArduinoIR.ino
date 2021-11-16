@@ -1,31 +1,100 @@
-#include <IRremote.h>
-const int irReceiverPin = 7;
-IRrecv irrecv(irReceiverPin);
-decode_results results;
-IRsend irsend;
+#include <IRLibSendBase.h>
+#include <IRLib_HashRaw.h>
 
-void setup()
-{
+IRsendRaw mySender;
+
+uint16_t on[18] = {
+  3022, 1110, 662, 1586, 1474, 762, 1474, 762,
+  1474, 766, 662, 1582, 1474, 766, 662, 1582,
+  1474, 1000
+};
+
+uint16_t up[18] = {
+  3018, 1110, 662, 1586, 1474, 762, 662, 1586,
+  662, 1586, 662, 1582, 666, 1582, 662, 1586,
+  1474, 1000
+};
+
+uint16_t right[18] = {
+  3018, 1110, 662, 1582, 1478, 762, 662, 1582,
+  666, 1582, 662, 1586, 1474, 762, 1474, 762,
+  1478, 1000
+};
+
+
+uint16_t down[18] = {
+  3018, 1110, 662, 1586, 1474, 762, 662, 1566,
+  682, 1586, 662, 1586, 662, 1582, 1478, 762,
+  1474, 1000
+};
+
+uint16_t left[18] = {
+  3018, 1110, 662, 1586, 1478, 758, 666, 1582,
+  662, 1586, 662, 1586, 1474, 762, 662, 1586,
+  1474, 1000
+};
+
+uint16_t recharge[54] = {
+  3014, 1114, 662, 1582, 1478, 762, 662, 1582,
+  1474, 766, 662, 1582, 662, 1586, 1474, 762,
+  1478, 5742, 3022, 1110, 662, 1562, 1498, 762,
+  662, 1586, 1474, 762, 662, 1586, 662, 1582,
+  1478, 762, 1470, 5746, 3022, 1110, 662, 1586,
+  1474, 762, 662, 1586, 1474, 762, 662, 1586,
+  662, 1582, 1474, 762, 1478, 1000
+};
+
+uint16_t mode[54] = {
+  2994, 1110, 666, 1582, 1478, 762, 658, 1586,
+  662, 1586, 1474, 762, 662, 1586, 1474, 762,
+  1474, 1390, 2998, 1110, 662, 1586, 1470, 766,
+  662, 1586, 658, 1586, 1474, 766, 662, 1582,
+  1474, 766, 1474, 1390, 2994, 1110, 662, 1586,
+  1474, 762, 662, 1586, 662, 1582, 1478, 762,
+  662, 1586, 1474, 762, 1474, 1000
+};
+
+uint16_t super[54] = {
+  3022, 1110, 666, 1582, 1474, 762, 662, 1586,
+  662, 1586, 1474, 762, 666, 1582, 1474, 762,
+  662, 6574, 3018, 1110, 662, 1582, 1478, 762,
+  662, 1586, 662, 1582, 1474, 766, 658, 1586,
+  1478, 762, 662, 6570, 3018, 1110, 662, 1586,
+  1474, 762, 662, 1586, 658, 1586, 1474, 766,
+  662, 1582, 1474, 766, 662, 1000
+};
+
+void setup() {
   Serial.begin(9600);
-  irrecv.enableIRIn();
+  Serial.println(F("Pressione o comando desejado"));
 }
 
-void loop()
-{
-  if (irrecv.decode(&results))
-  {
-    Serial.print("irCode HEX: ");
-    Serial.print(results.value, HEX);
-    Serial.print(" irCode DEC: ");
-    Serial.print(results.value, DEC);
-    Serial.print(", bits: ");
-    Serial.println(results.bits);
-    irrecv.resume();
-  }  
-  delay(250);
-  
+void loop() {
   int result = Serial.parseInt();
-  if (result == 1) {
-    irsend.sendNEC(0xF740BF, 32);
+  switch (result) {
+    case 1:
+      mySender.send(on, 18, 36);
+      break;
+    case 2:
+      mySender.send(up, 18, 36);
+      break;
+    case 3:
+      mySender.send(right, 18, 36);
+      break;
+    case 4:
+      mySender.send(down, 18, 36);
+      break;
+    case 5:
+      mySender.send(left, 18, 36);
+      break;
+    case 6:
+      mySender.send(recharge, 54, 36);
+      break;
+    case 7:
+      mySender.send(mode, 54, 36);
+      break;
+    case 8:
+      mySender.send(super,  54, 36);
+      break;
   }
 }
