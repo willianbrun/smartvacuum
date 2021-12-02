@@ -19,7 +19,7 @@ void MainWindow::replyFinished(QNetworkReply *reply)
     qDebug() << reply->readAll();
 }
 
-void MainWindow::on_OnOffpushButton_clicked()
+void MainWindow::on_onOffpushButton_clicked()
 {
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 

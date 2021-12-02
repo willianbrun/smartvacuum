@@ -18,7 +18,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_OnOffpushButton_clicked();
+    void on_onOffpushButton_clicked();
 
     void replyFinished(QNetworkReply *);
 

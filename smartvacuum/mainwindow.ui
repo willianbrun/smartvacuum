@@ -7,25 +7,69 @@
     <x>0</x>
     <y>0</y>
     <width>1023</width>
-    <height>621</height>
+    <height>458</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Smart Vacuum</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>110</y>
-      <width>371</width>
-      <height>261</height>
+      <x>90</x>
+      <y>50</y>
+      <width>191</width>
+      <height>290</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout" rowminimumheight="0,0,0,0,0,0">
-     <item row="0" column="0">
-      <widget class="QPushButton" name="OnOffpushButton">
+    <layout class="QGridLayout" name="gridLayout" rowminimumheight="0,0,0,0,0,0,0,0,0,0,0,0">
+     <item row="8" column="0">
+      <widget class="QPushButton" name="recharge_pushButton">
+       <property name="toolTip">
+        <string/>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>Recarga</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QPushButton" name="right_pushButton_3">
+       <property name="text">
+        <string>Direita</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QPushButton" name="mode_pushButton">
+       <property name="text">
+        <string>Modo</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="up_pushButton">
+       <property name="text">
+        <string>Frente</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QPushButton" name="down_pushButton">
+       <property name="text">
+        <string>Atrás</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="onOff_pushButton">
        <property name="text">
         <string>Liga/Desliga</string>
        </property>
@@ -34,35 +78,283 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="0">
-      <widget class="QPushButton" name="pushButton_3">
+     <item row="10" column="0">
+      <widget class="QPushButton" name="super_pushButton">
        <property name="text">
-        <string>Direita</string>
+        <string>Super</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <widget class="QPushButton" name="pushButton_5">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
        <property name="text">
-        <string>Frente</string>
+        <string>Comandos</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
      <item row="5" column="0">
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="left_pushButton">
        <property name="text">
         <string>Esquerda</string>
        </property>
       </widget>
      </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>50</y>
+      <width>221</width>
+      <height>82</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="1" column="0">
+      <widget class="QComboBox" name="mode_comboBox">
+       <item>
+        <property name="text">
+         <string>Autolimpeza</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Limpeza especial</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Limpeza aleatória</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Limpeza em bordas e cantos</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Limpeza zigue-zague</string>
+        </property>
+       </item>
+      </widget>
+     </item>
      <item row="2" column="0">
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="selectMode_pushButton">
        <property name="text">
-        <string>Atrás</string>
+        <string>Selecionar</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Selecionar modo de operação</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>50</y>
+      <width>301</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="1" column="0">
+      <widget class="QComboBox" name="recording_comboBox"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Executar gravação</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="edit_pushButton">
+       <property name="text">
+        <string>Editar/criar gravações</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="play_pushButton">
+       <property name="text">
+        <string>Executar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>170</y>
+      <width>221</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_4">
+     <item row="5" column="0">
+      <widget class="QPushButton" name="selectRecording_pushButton">
+       <property name="text">
+        <string>Selecionar gravação</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QDateTimeEdit" name="schedule_dateTimeEdit"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="text">
+        <string>Programar comando ou gravação</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="selected_label">
+       <property name="text">
+        <string>Nenhum comando/gravação selecionado</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QPushButton" name="selectCommand_pushButton">
+       <property name="text">
+        <string>Selecionar comando</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QPushButton" name="schedule_pushButton">
+       <property name="text">
+        <string>Agendar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>180</y>
+      <width>301</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Histórico</string>
+     </attribute>
+     <widget class="QTableWidget" name="history_tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>301</width>
+        <height>181</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>false</bool>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::NoSelection</enum>
+      </property>
+      <column>
+       <property name="text">
+        <string>Comando</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Horário</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Programado</string>
+     </attribute>
+     <widget class="QTableWidget" name="scheduled_tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>301</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>false</bool>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::NoSelection</enum>
+      </property>
+      <column>
+       <property name="text">
+        <string>Comando</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Horário</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -71,11 +363,14 @@
      <x>0</x>
      <y>0</y>
      <width>1023</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
