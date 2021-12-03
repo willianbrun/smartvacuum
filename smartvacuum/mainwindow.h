@@ -18,12 +18,17 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_onOffpushButton_clicked();
+    void on_onOff_pushButton_clicked();
 
     void replyFinished(QNetworkReply *);
 
+    void on_selectMode_pushButton_clicked();
+
+
+
 private:
     Ui::MainWindow *ui;
+    int currentMode = 0;
 };
 
 #endif // MAINWINDOW_H
