@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1023</width>
-    <height>458</height>
+    <width>934</width>
+    <height>433</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -110,10 +110,20 @@
       <x>360</x>
       <y>50</y>
       <width>223</width>
-      <height>82</height>
+      <height>111</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Modo de operação</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
      <item row="1" column="0">
       <widget class="QComboBox" name="mode_comboBox">
        <item>
@@ -133,7 +143,7 @@
        </item>
        <item>
         <property name="text">
-         <string>Limpeza em bordas e cantos</string>
+         <string>Limpeza em cantos</string>
         </property>
        </item>
        <item>
@@ -143,17 +153,17 @@
        </item>
       </widget>
      </item>
-     <item row="2" column="0">
+     <item row="5" column="0">
       <widget class="QPushButton" name="selectMode_pushButton">
        <property name="text">
         <string>Selecionar</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_3">
+     <item row="6" column="0">
+      <widget class="QLabel" name="currentMode_label">
        <property name="text">
-        <string>Selecionar modo de operação</string>
+        <string>Modo atual: Autolimpeza</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -165,196 +175,126 @@
    <widget class="QWidget" name="gridLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>50</y>
-      <width>301</width>
-      <height>116</height>
+      <x>360</x>
+      <y>190</y>
+      <width>221</width>
+      <height>151</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout_3">
-     <item row="1" column="0">
-      <widget class="QComboBox" name="recording_comboBox"/>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>Executar rotina</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QPushButton" name="edit_pushButton">
-       <property name="text">
-        <string>Editar/criar rotina</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="play_pushButton">
-       <property name="text">
-        <string>Executar</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="gridLayoutWidget_4">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>170</y>
-      <width>226</width>
-      <height>181</height>
-     </rect>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_4">
      <item row="5" column="0">
-      <widget class="QPushButton" name="selectRecording_pushButton">
+      <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>Selecionar rotina</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="0">
-      <widget class="QDateTimeEdit" name="schedule_dateTimeEdit"/>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="lineWidth">
-        <number>1</number>
-       </property>
-       <property name="text">
-        <string>Programar comando ou gravação</string>
+        <string>Nenhuma rotina agendada</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0">
-      <widget class="QLabel" name="selected_label">
-       <property name="text">
-        <string>Nenhum comando/gravação selecionado</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item row="4" column="0">
-      <widget class="QPushButton" name="selectCommand_pushButton">
-       <property name="text">
-        <string>Selecionar comando</string>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QTimeEdit" name="schedule_timeEdit"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="schedule_pushButton">
+         <property name="text">
+          <string>Agendar</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="3" column="0">
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
-     <item row="9" column="0">
-      <widget class="QPushButton" name="schedule_pushButton">
+     <item row="1" column="0">
+      <widget class="QComboBox" name="routine_comboBox"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="play_pushButton">
        <property name="text">
-        <string>Agendar</string>
+        <string>Executar agora</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Rotina</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
     </layout>
    </widget>
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QTableWidget" name="history_tableWidget">
     <property name="geometry">
      <rect>
-      <x>660</x>
-      <y>180</y>
-      <width>301</width>
-      <height>171</height>
+      <x>650</x>
+      <y>70</y>
+      <width>211</width>
+      <height>201</height>
      </rect>
     </property>
-    <property name="currentIndex">
-     <number>1</number>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
     </property>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>Histórico</string>
-     </attribute>
-     <widget class="QTableWidget" name="history_tableWidget">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>301</width>
-        <height>181</height>
-       </rect>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="alternatingRowColors">
-       <bool>false</bool>
-      </property>
-      <property name="selectionMode">
-       <enum>QAbstractItemView::NoSelection</enum>
-      </property>
-      <column>
-       <property name="text">
-        <string>Comando</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Horário</string>
-       </property>
-      </column>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Programado</string>
-     </attribute>
-     <widget class="QTableWidget" name="scheduled_tableWidget">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>301</width>
-        <height>141</height>
-       </rect>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="alternatingRowColors">
-       <bool>false</bool>
-      </property>
-      <property name="selectionMode">
-       <enum>QAbstractItemView::NoSelection</enum>
-      </property>
-      <column>
-       <property name="text">
-        <string>Comando</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Horário</string>
-       </property>
-      </column>
-     </widget>
-    </widget>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="alternatingRowColors">
+     <bool>false</bool>
+    </property>
+    <property name="selectionMode">
+     <enum>QAbstractItemView::NoSelection</enum>
+    </property>
+    <column>
+     <property name="text">
+      <string>Comando</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Horário</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>50</y>
+      <width>58</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Histórico</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="edit_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>290</y>
+      <width>211</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Editar/criar rotinas</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -362,7 +302,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1023</width>
+     <width>934</width>
      <height>22</height>
     </rect>
    </property>

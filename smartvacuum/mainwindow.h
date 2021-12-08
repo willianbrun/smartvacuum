@@ -24,12 +24,32 @@ private slots:
 
     void on_selectMode_pushButton_clicked();
 
+    void on_edit_pushButton_clicked();
 
+    void on_up_pushButton_clicked();
+
+    void on_down_pushButton_clicked();
+
+    void on_left_pushButton_clicked();
+
+    void on_right_pushButton_3_clicked();
+
+    void on_recharge_pushButton_clicked();
+
+    void on_mode_pushButton_clicked();
+
+    void on_super_pushButton_clicked();
+
+    void on_play_pushButton_clicked();
+
+    void dialogFinished();
 
 private:
     Ui::MainWindow *ui;
     int currentMode = 0;
     void sendData(QString command);
+    void playRoutine();
+    void listRoutines();
 };
 
 #endif // MAINWINDOW_H
