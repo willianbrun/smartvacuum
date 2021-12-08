@@ -29,6 +29,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     int currentMode = 0;
+    void sendData(QString command);
 };
 
 #endif // MAINWINDOW_H
