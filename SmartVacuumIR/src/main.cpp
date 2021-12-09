@@ -57,6 +57,7 @@ uint16_t super[54] = {
     1474, 762, 662, 1586, 658, 1586, 1474, 766,
     662, 1582, 1474, 766, 662, 1000};
 
+//Network to connect
 const char *ssid = "iPhone de Willian";
 const char *password = "willian123";
 WiFiServer server(80);
@@ -88,6 +89,8 @@ void setup()
 
 void loop()
 {
+
+  //Connect to a client
   WiFiClient client = server.available();
   if (client)
   {
@@ -97,6 +100,7 @@ void loop()
     {
       if (client.available())
       {
+        //And read the Get request
         char c = client.read();
         Serial.write(c);
         if (c == '\n')
@@ -119,6 +123,8 @@ void loop()
         {
           currentLine += c;
         }
+
+        //For each word got (after URL), do the respective command
         if (currentLine.endsWith("GET /p"))
         {
           Serial.println("Power");

@@ -19,7 +19,7 @@
      <x>60</x>
      <y>80</y>
      <width>191</width>
-     <height>348</height>
+     <height>371</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout" rowminimumheight="0,0,0,0,0,0,0,0,0,0,0,0,0">
@@ -130,7 +130,7 @@
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
     <rect>
-     <x>310</x>
+     <x>320</x>
      <y>150</y>
      <width>171</width>
      <height>161</height>
@@ -152,7 +152,7 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>390</x>
      <y>80</y>
      <width>41</width>
      <height>16</height>
@@ -165,8 +165,8 @@
   <widget class="QLineEdit" name="name_lineEdit">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>100</y>
+     <x>350</x>
+     <y>110</y>
      <width>113</width>
      <height>28</height>
     </rect>
@@ -203,20 +203,13 @@
   <widget class="QWidget" name="gridLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>300</x>
      <y>330</y>
-     <width>121</width>
-     <height>104</height>
+     <width>210</width>
+     <height>114</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="1" column="0">
-     <widget class="QPushButton" name="remove_pushButton">
-      <property name="text">
-       <string>Remover item</string>
-      </property>
-     </widget>
-    </item>
     <item row="5" column="0">
      <widget class="QPushButton" name="delete_pushButton">
       <property name="enabled">
@@ -244,6 +237,13 @@
      <widget class="QPushButton" name="createEdit_pushButton">
       <property name="text">
        <string>Criar</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="remove_pushButton">
+      <property name="text">
+       <string>Remover item</string>
       </property>
      </widget>
     </item>

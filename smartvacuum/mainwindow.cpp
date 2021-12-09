@@ -10,6 +10,7 @@
 //IP Created by ESP32 to connect with this program
 QString ip = "http://172.20.10.2";
 
+//Commands mapped in ESP32, that do the respective functions
 QMap<QString, QString> commandNames{{"Liga/Desliga", "p"} , {"Frente", "u"}, {"Atrás", "down"}, {"Esquerda", "left"}, {"Direita", "r"},
                                     {"Recarga", "recharge"}, {"Modo", "mode"}, {"Super", "super"}};
 
@@ -41,11 +42,13 @@ void MainWindow::sendData(QString command)
     QDateTime date = QDateTime::currentDateTime();
     QString formattedTime = date.toString("hh:mm:ss");
 
+    //Set in the history
     ui->history_tableWidget->insertRow(0);
     ui->history_tableWidget->setItem(0, 0, new QTableWidgetItem(commandNames.key(command)));
     ui->history_tableWidget->setItem(0, 1, new QTableWidgetItem(formattedTime));
 }
 
+//Function that gets the success reply
 void MainWindow::replyFinished(QNetworkReply *reply)
 {
     qDebug() << reply->readAll();
@@ -205,5 +208,13 @@ void MainWindow::on_schedule_pushButton_clicked()
 
     QTimer::singleShot(diff, this, SLOT(playSchedule()));
 
-    ui->schedule_label->setText(QString("%1 às %2").arg(scheduledRoutine, setTime.toString("hh:mm")));
+    if(scheduledRoutine == "")
+    {
+        ui->schedule_label->setText("Nenhuma rotina agendada");
+    }
+
+    else
+    {
+        ui->schedule_label->setText(QString("%1 às %2").arg(scheduledRoutine, setTime.toString("hh:mm")));
+    }
 }
