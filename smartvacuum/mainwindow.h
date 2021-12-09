@@ -44,9 +44,14 @@ private slots:
 
     void dialogFinished();
 
+    void on_schedule_pushButton_clicked();
+
+    void playSchedule();
+
 private:
     Ui::MainWindow *ui;
     int currentMode = 0;
+    QString scheduledRoutine;
     void sendData(QString command);
     void playRoutine();
     void listRoutines();

@@ -5,15 +5,20 @@
 #include <QDebug>
 #include <QSettings>
 #include <QThread>
+#include <QTimer>
 
 //IP Created by ESP32 to connect with this program
 QString ip = "http://172.20.10.2";
+
+QMap<QString, QString> commandNames{{"Liga/Desliga", "p"} , {"Frente", "u"}, {"Atrás", "down"}, {"Esquerda", "left"}, {"Direita", "r"},
+                                    {"Recarga", "recharge"}, {"Modo", "mode"}, {"Super", "super"}};
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->history_tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     listRoutines();
 }
 
@@ -28,10 +33,17 @@ void MainWindow::sendData(QString command)
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
 
     connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
-      manager->get(QNetworkRequest(QUrl(QString("%1/%2").arg(ip, command))));
+    manager->get(QNetworkRequest(QUrl(QString("%1/%2").arg(ip, command))));
 
     qDebug() << "Sent command: ";
     qDebug() << command;
+
+    QDateTime date = QDateTime::currentDateTime();
+    QString formattedTime = date.toString("hh:mm:ss");
+
+    ui->history_tableWidget->insertRow(0);
+    ui->history_tableWidget->setItem(0, 0, new QTableWidgetItem(commandNames.key(command)));
+    ui->history_tableWidget->setItem(0, 1, new QTableWidgetItem(formattedTime));
 }
 
 void MainWindow::replyFinished(QNetworkReply *reply)
@@ -46,41 +58,26 @@ void MainWindow::playRoutine(){
 
     for(int i = 0; i < commands.count(); i++)
     {
-        if(commands.at(i).indexOf(QString("Aguardar ")) == 0){
+        if(commands.at(i).indexOf(QString("Aguardar ")) == 0)
+        {
             QThread::sleep(QString(commands[i]).mid(9).toInt());
         }
 
-        if(commands.at(i) == "Liga/Desliga") {
+        else if(commands.at(i) == "Liga/Desliga")
+        {
             on_onOff_pushButton_clicked();
         }
 
-        if(commands.at(i) == "Frente"){
-        sendData("u");
+        else if(commands.at(i) == "Modo")
+        {
+            on_mode_pushButton_clicked();
         }
 
-        if(commands.at(i) == "Atrás"){
-        sendData("down");
+        else
+        {
+            sendData(commandNames[commands.at(i)]);
         }
 
-        if(commands.at(i) == "Esquerda"){
-    sendData("left");
-        }
-
-        if(commands.at(i) == "Direita"){
-    sendData("r");
-        }
-
-        if(commands.at(i) == "Recarga"){
-    sendData("recharge");
-        }
-
-        if(commands.at(i) == "Modo"){
-on_mode_pushButton_clicked();
-        }
-
-        if(commands.at(i) == "Super"){
-    sendData("super");
-        }
     }
     sett.endGroup();
 }
@@ -95,6 +92,13 @@ void MainWindow::listRoutines(){
 
 void MainWindow::dialogFinished(){
     listRoutines();
+}
+
+void MainWindow::playSchedule() {
+    int index = ui->routine_comboBox->findText(scheduledRoutine);
+    ui->routine_comboBox->setCurrentIndex(index);
+    on_play_pushButton_clicked();
+    ui->schedule_label->setText("Nenhuma rotina agendada");
 }
 
 void MainWindow::on_selectMode_pushButton_clicked()
@@ -182,4 +186,24 @@ void MainWindow::on_super_pushButton_clicked()
 void MainWindow::on_play_pushButton_clicked()
 {
     playRoutine();
+}
+
+void MainWindow::on_schedule_pushButton_clicked()
+{
+
+    scheduledRoutine = ui->routine_comboBox->currentText();
+    QDateTime then = QDateTime::currentDateTime();
+    auto setTime = ui->schedule_timeEdit->time();
+
+    if(then.time() > setTime){
+        then = then.addDays(1);
+    }
+    then.setTime(setTime);
+
+
+    int diff = QDateTime::currentDateTime().msecsTo(then);
+
+    QTimer::singleShot(diff, this, SLOT(playSchedule()));
+
+    ui->schedule_label->setText(QString("%1 às %2").arg(scheduledRoutine, setTime.toString("hh:mm")));
 }

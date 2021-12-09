@@ -48,9 +48,6 @@ private slots:
 
 private:
     Ui::RoutinesDialog *ui;
-    //QStringList commands;
-    //bool editing;
-    //QVariantMap<QString, QStringList> routines;
 };
 
 #endif // ROUTINESDIALOG_H
